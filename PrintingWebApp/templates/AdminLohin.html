@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Form</title>
+ <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+      <script type="text/javascript">
+         function preventBack(){window.history.forward};
+         setTimeout("preventBack()",0);
+         window.onunload=function(){null}
+     </script>
+</head>
+<body>
+             <a href="/back"> <img src="{{url_for('static', filename='back.png')}}" alt="logo" width="70" height="70px"/></a>
+			<div class= "image"><img src="{{url_for('static', filename='logo.png')}}" alt="logo" width="70" height="70px"/></div>
+			<center><p font-size= "10px">
+			<b>ADMIN LOGIN</b>
+		</p></center>
+    <div class="login">
+		<br><br>
+
+    <form id="login" method="POST" action="">
+           {{msg}}
+        <br><br>
+        <input type="text" name="user_name" id="user_name" placeholder="Username" required >
+        <br><br>
+        <input type="Password" name="password" id="password" placeholder="Password"  required>
+        <br><br>
+        <input type="submit" name="log" id="log" value="Log In">
+        <br><br>
+         <label>
+			 <a href="">Forgot password?</a>
+
+		 </label>
+
+    </form>
+</div>
+</body>
+</html>

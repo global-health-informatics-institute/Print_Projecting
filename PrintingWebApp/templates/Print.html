@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Document</title>
+    <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+      <script type="text/javascript">
+         function preventBack(){window.history.forward};
+         setTimeout("preventBack()",0);
+         window.onunload=function(){null}
+     </script>
+   </head>
+<body>
+<div class="container">
+
+logged in as <h1>{{u_id}} <button type="button" class="btn btn-info float-end" onclick="window.location.href='{{url_for('ulogout')}}'">Log out</button></h1>
+<br>
+     <div class=" text-center">
+        <h2>Upload file to print</h2>
+        <br><br>
+     </div>
+    <div id="example-div" class="bg-white border d-flex aligns-items-center justify-content-center" >
+        <br>
+        {{message}}
+        <br><br>
+
+        <b>Choose your Department:</b>  &nbsp
+
+<form action = "" method = "POST" enctype = "multipart/form-data">
+
+        <select class="form-select" aria-label="Default select example"  name = "department" id="department">
+
+              <option selected>OpenO2</option>
+              <option value = "Product Development">Product Development</option>
+              <option value = "Finance and Administration">Finance and Administration</option>
+        </select>
+          <br><br>
+         <div class="input-group mb-3">
+            <input type="file" class="form-control" id="inputGroupFile02"  name = "file">
+
+         </div>
+
+         <br><br>
+        <label>Number of copies:</label>  &nbsp
+        <input type="number" min="1" name="copies" id="copies" style="width: 7em"/>
+        <br><br>
+
+        <input type="submit" value="Upload">
+
+      </form>
+
+
+<br><br>
+{{msg}}
+    </div>
+    </div>
+</body>
+</html>

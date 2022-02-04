@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Form</title>
+ <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+
+</head>
+<body>
+
+		<div class= "image"><img src="{{url_for('static', filename='logo.png')}}" alt="logo" width="70" height="70px"/></div>
+		<center><p font-size= "10px">
+			Welcome, Log in as:
+		</p></center>
+			<br>
+
+	<div class="login">
+	   <table><tr><td>
+       <a href="{{ url_for('admin_login') }}"> <input type="button" name="admin" id="log" value="ADMIN"> </a>
+        <br><br>
+		</td></tr>
+
+		  <tr><td><a href=" {{url_for('staff_login') }}"><input type="button" name="staff" id="log2" value="STAFF"></a>
+        <br><br> </td></tr>
+        </table>
+</div>
+</body>
+</html>
