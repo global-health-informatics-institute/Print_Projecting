@@ -42,9 +42,11 @@ def allowed_file(filename):
 
 @app.route('/upload_file', methods=['GET', 'POST'])
 def upload_file():
+    u_id = session['u_id']
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM users WHERE u_id=%s", (session['u_id'],))
     rec = cur.fetchone()
+    username = rec[1]
 
     if request.method == 'POST':
         file = request.files['file']
@@ -53,13 +55,12 @@ def upload_file():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             department = request.form['department']
             copies = request.form['copies']
-            u_id = session['u_id']
             cur.execute("INSERT INTO print( u_id, department, filename, copies) VALUES(%s,%s,%s,%s)",
                         (u_id, department, filename, copies))
             mysql.connection.commit()
-            return render_template('Print.html', u_id=session['u_id'], msg="success!!")
+            return render_template('Print.html', user=username, msg="success!!")
 
-    return render_template('Print.html', u_id=session['u_id'])
+    return render_template('Print.html', user=username)
 
 
 @app.route('/admin_login', methods=['GET', 'POST'])

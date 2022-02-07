@@ -7,11 +7,14 @@
 </head>
 <body>
         <div class="container">
+
+
         <div class="row">
             <div class="col-md-4 offset-md-4">
                 <div class="login-form bg-light mt-4 p-4">
-                    <form action="" method="POST" class="row g-3">
+                    <form action="" id="login" method="POST" class="row g-3">
                         <h4>Welcome,</h4>
+                        {{msg}}
                         <div class="col-12">
                             <label>Username</label>
                             <input type="text" name="user_name" class="form-control" >
@@ -21,13 +24,7 @@
                             <input type="password" name="password" class="form-control">
                         </div>
                         <div class="col-12">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="rememberMe">
-                                <label class="form-check-label" for="rememberMe"> Remember me</label>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-dark float-end">Login</button>
+                            <button type="submit" class="btn btn-success float-end" name="log" id="log">Login</button>
                         </div>
                     </form>
 
