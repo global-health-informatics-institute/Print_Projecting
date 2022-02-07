@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Login Form</title>
+    <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
  <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
       <script type="text/javascript">
          function preventBack(){window.history.forward};
@@ -10,29 +11,32 @@
      </script>
 </head>
 <body>
-             <a href="/back"> <img src="{{url_for('static', filename='back.png')}}" alt="logo" width="70" height="70px"/></a>
-			<div class= "image"><img src="{{url_for('static', filename='logo.png')}}" alt="logo" width="70" height="70px"/></div>
-			<center><p font-size= "10px">
-			<b>ADMIN LOGIN</b>
-		</p></center>
-    <div class="login">
-		<br><br>
+<div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <div class="login-form bg-light mt-4 p-4">
+                    <form action="" id="login" method="POST" class="row g-3">
+                        <h4>Welcome,</h4>
+                        {{msg}}
+                        <div class="col-12">
+                            <label>Username</label>
+                            <input type="text" name="user_name" class="form-control" >
+                        </div>
+                        <div class="col-12">
+                            <label>Password</label>
+                            <input type="password" name="password" class="form-control">
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-success float-end" name="log" id="log">Login</button>
+                        </div>
+                    </form>
 
-    <form id="login" method="POST" action="">
-           {{msg}}
-        <br><br>
-        <input type="text" name="user_name" id="user_name" placeholder="Username" required >
-        <br><br>
-        <input type="Password" name="password" id="password" placeholder="Password"  required>
-        <br><br>
-        <input type="submit" name="log" id="log" value="Log In">
-        <br><br>
-         <label>
-			 <a href="">Forgot password?</a>
-
-		 </label>
-
-    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
+<script type="text/javascript" src="{{url_for('static', filename= 'js/jquery-3.6.0.min.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static', filename= 'js/bootstrap.min.js')}}"></script>
 </html>
