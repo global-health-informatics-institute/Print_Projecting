@@ -2,42 +2,43 @@
 <html>
 <head>
     <title>Login Form</title>
- <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <link href="{{url_for('static', filename='style.css')}}" rel="stylesheet">
     <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
-   <script type="text/javascript">
+    <script type="text/javascript">
          function preventBack(){window.history.forward};
          setTimeout("preventBack()",0);
          window.onunload=function(){null}
-     </script>
+
+    </script>
 </head>
 <body>
 <div class="container">
-        <div class="row">
-            <div class="col-md-4 offset-md-4">
-                <div class="login-form bg-light mt-4 p-4">
-                    <form action="" id="login" method="POST" class="row g-3">
-                        <h4>Welcome,</h4>
-                        {{msg}}
-                        <div class="col-12">
-                            <label>Username</label>
-                            <input type="text" name="user_name" class="form-control" >
-                        </div>
-                        <div class="col-12">
-                            <label>Password</label>
-                            <input type="password" name="password" class="form-control">
-                        </div>
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-success float-end" name="log" id="log">Login</button>
-                        </div>
-                    </form>
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div class="login-form bg-light mt-4 p-4">
+                <form action="" class="row g-3" id="login" method="POST">
+                    <h4>Welcome,</h4>
+                    {{msg}}
+                    <div class="col-12">
+                        <label>Username</label>
+                        <input class="form-control" name="user_name" type="text">
+                    </div>
+                    <div class="col-12">
+                        <label>Password</label>
+                        <input class="form-control" name="password" type="password">
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-success float-end" id="log" name="log" type="submit">Login</button>
+                    </div>
+                </form>
 
-                </div>
             </div>
         </div>
     </div>
+</div>
 
 
 </body>
-<script type="text/javascript" src="{{url_for('static', filename= 'js/jquery-3.6.0.min.js')}}"></script>
-<script type="text/javascript" src="{{url_for('static', filename= 'js/bootstrap.min.js')}}"></script>
+<script src="{{url_for('static', filename= 'js/jquery-3.6.0.min.js')}}" type="text/javascript"></script>
+<script src="{{url_for('static', filename= 'js/bootstrap.min.js')}}" type="text/javascript"></script>
 </html>

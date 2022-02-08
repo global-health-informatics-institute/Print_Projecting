@@ -1,12 +1,14 @@
 <html>
 <head>
     <title>Admin Dashboard</title>
-     <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
-     <script type="text/javascript">
+    <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+    <script type="text/javascript">
          function preventBack(){window.history.forward};
          setTimeout("preventBack()",0);
          window.onunload=function(){null}
-     </script>
+
+
+    </script>
 </head>
 <body>
 {% block body%}
@@ -14,42 +16,42 @@
 <div class="container">
 
 
-
     <div class="card text-center">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Dashboard</a>
+                <span class="float-end"> <a href="{{url_for('logout')}}">Log out</a></span>
+            </div>
+        </nav>
 
-        <div>
-        <h2>
-            <span class="float-end"> <a href="{{url_for('logout')}}">Log out</a></span>
-        </h2>
-
-        </div>
-        <h1>ADMIN DASHBOARD</h1>
-
-        <div class="container">
+      <div class="container">
             <div class="row">
                 <div class="col md-12">
-                    <h2><span class="float-start">Staff List</span> <a href="{{url_for('upload_file')}}">Print</a><button type="button" class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#Mymodal">Add Staff</button>
-                    </h2>
+                  <span class="float-start">Staff List</span> <a href="{{url_for('upload_file')}}">Print</a>
+                        <button type="button" class="btn btn-success float-end btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#Mymodal" >Add Staff
+                        </button>
 
-                        {%with messages = get_flashed_messages()%}
 
-                        {%if messages%}
+                    {%with messages = get_flashed_messages()%}
 
-                        {% for message in messages %}
+                    {%if messages%}
 
-                        <div class="alert alert-success alert-dismissable" role="alert">
+                    {% for message in messages %}
 
-                        <button type="button" class="close" data-bs-dismiss="alert" aria-label ="close">
+                    <div class="alert alert-success alert-dismissable" role="alert">
 
-                        <span aria-hidden="true">&times;</span>
+                        <button type="button" class="close" data-bs-dismiss="alert" aria-label="close">
+
+                            <span aria-hidden="true">&times;</span>
 
                         </button>
                         {{message}}
-                        </div>
+                    </div>
 
-                        {%endfor%}
-                        {%endif%}
-                        {%endwith%}
+                    {%endfor%}
+                    {%endif%}
+                    {%endwith%}
 
                     <table class="table table-striped">
                         <tr>
@@ -65,78 +67,83 @@
                             <td>{{row.1}}</td>
                             <td>{{row.2}}</td>
                             <td>
-                                <a href="/update/{{row.0}}" class="btn btn-warning btn-xs" data-bs-toggle="modal" data-bs-target="#modaledit{{row.0}}">Edit</a>
-                                <a href="/delete/{{row.0}}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure For Delete?')">Delete</a>
+                                <a href="/update/{{row.0}}" class="btn btn-warning btn-xs" data-bs-toggle="modal"
+                                   data-bs-target="#modaledit{{row.0}}">Edit</a>
+                                <a href="/delete/{{row.0}}" class="btn btn-danger btn-xs"
+                                   onclick="return confirm('Are You Sure For Delete?')">Delete</a>
                             </td>
 
                         </tr>
 
                         <!-- Modal -->
-<div id="modaledit{{row.0}}" class="modal fade" role="dialog">
-<div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Please Update Staff Data</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+                        <div id="modaledit{{row.0}}" class="modal fade" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Please Update Staff Data</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
 
-         </div>
-
-
-         <div class="modal-body">
+                                    </div>
 
 
-            <form action="{{url_for('update')}}" method="POST">
+                                    <div class="modal-body">
 
 
-               <div class="form-group">
+                                        <form action="{{url_for('update')}}" method="POST">
 
 
-                  <label>Username:</label>
-                   <input type="hidden" name="u_id" value="{{row.0}}">
-                  <input type="text" class="form-control" name="user_name" value="{{row.1}}">
+                                            <div class="form-group">
 
 
-               </div>
+                                                <label>Username:</label>
+                                                <input type="hidden" name="u_id" value="{{row.0}}">
+                                                <input type="text" class="form-control" name="user_name"
+                                                       value="{{row.1}}">
 
 
-                <div class="form-group">
+                                            </div>
 
 
-                  <label>Password:</label>
-                  <input type="text" class="form-control" name="password" value="{{row.2}}">
+                                            <div class="form-group">
 
 
-               </div>
+                                                <label>Password:</label>
+                                                <input type="text" class="form-control" name="password"
+                                                       value="{{row.2}}">
 
 
-                <br>
-               <div class="form-group">
+                                            </div>
 
 
-                  <button class="btn btn-primary" type="submit">Update Staff</button>
+                                            <br>
+                                            <div class="form-group">
 
 
-               </div>
+                                                <button class="btn btn-primary" type="submit">Update Staff</button>
 
 
-            </form>
+                                            </div>
 
 
-         </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
+                                        </form>
 
 
-      </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                        </button>
+                                    </div>
 
 
-   </div>
+                                </div>
 
 
-</div>
+                            </div>
+
+
+                        </div>
 
                         {% endfor %}
                     </table>
@@ -145,86 +152,79 @@
         </div>
 
 
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Please Insert Staff Data</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+
+                    </div>
 
 
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-
-<div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Please Insert Staff Data</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-
-         </div>
+                    <div class="modal-body">
 
 
-         <div class="modal-body">
+                        <form action="{{url_for('add_user')}}" method="POST">
 
 
-            <form action="{{url_for('add_user')}}" method="POST">
+                            <div class="form-group">
 
 
-               <div class="form-group">
+                                <label>Username:</label>
+                                <input type="text" class="form-control" name="user_name" required="1">
 
 
-                  <label>Username:</label>
-                  <input type="text" class="form-control" name="user_name" required="1">
+                            </div>
 
 
-               </div>
+                            <div class="form-group">
 
 
-                <div class="form-group">
+                                <label>Password:</label>
+                                <input type="text" class="form-control" name="password" required="1">
 
 
-                  <label>Password:</label>
-                  <input type="text" class="form-control" name="password" required="1">
+                            </div>
 
 
-               </div>
+                            <br>
+                            <div class="form-group">
 
 
-                <br>
-               <div class="form-group">
+                                <button class="btn btn-primary" type="submit">Add Staff</button>
 
 
-                  <button class="btn btn-primary" type="submit">Add Staff</button>
+                            </div>
 
 
-               </div>
+                        </form>
 
 
-            </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
 
 
-         </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
+                </div>
 
 
-      </div>
+            </div>
 
 
-   </div>
+        </div>
+    </div>
 
 
 </div>
-</div>
-
-
-</div>
-
-
 
 
 {% endblock %}
-
-
-
 
 
 </body>

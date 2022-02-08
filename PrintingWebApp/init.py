@@ -13,7 +13,7 @@ app.secret_key = "super secret key"
 app.config['MYSQL_HOST'] = '127.0.0.1'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'Printing'
+app.config['MYSQL_DB'] = 'printing'
 
 mysql = MySQL(app)
 
@@ -149,7 +149,7 @@ def add_user():
 def delete(id_data):
     flash("Data deleted successfully")
     cur = mysql.connection.cursor()
-    cur.execute("DELETE FROM users WHERE u_id=%s", (id_data))
+    cur.execute("DELETE FROM users WHERE u_id=%s", (id_data,))
     mysql.connection.commit()
     return redirect(url_for('Admin_Dashboard'))
 
