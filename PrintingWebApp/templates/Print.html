@@ -8,10 +8,6 @@
          function preventBack(){window.history.forward};
          setTimeout("preventBack()",0);
          window.onunload=function(){null}
-
-
-
-
     </script>
 </head>
 <body>
@@ -26,10 +22,8 @@
                      width="30">
                 {{user}}
             </a>
-            <span class="float-end"> <a href="{{url_for('logout')}}"><img alt="" class="d-inline-block align-text-top"
-                                                                          height="24"
-                                                                          src="{{url_for('static', filename='logout.png')}}"
-                                                                          width="30">Log out</a></span>
+            <span class="float-end"> <a href="{{url_for('logout')}}"><img alt="" class="d-inline-block align-text-top" height="24" src="{{url_for('static', filename='logout.png')}}" width="30">Log out</a>
+            </span>
         </div>
     </nav>
 

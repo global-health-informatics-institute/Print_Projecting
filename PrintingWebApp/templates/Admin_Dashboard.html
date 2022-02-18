@@ -8,6 +8,8 @@
          window.onunload=function(){null}
 
 
+
+
     </script>
 </head>
 <body>
@@ -20,21 +22,21 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Dashboard</a>
-                <span class="float-end"> <a href="{{url_for('logout')}}"><img alt=""
-                                                                              class="d-inline-block align-text-top"
-                                                                              height="24"
-                                                                              src="{{url_for('static', filename='logout.png')}}"
-                                                                              width="30">Log out</a></span>
+                <span class="float-end">
+                    <a href="{{url_for('logout')}}">
+                        <img alt="" class="d-inline-block align-text-top" height="24" src="{{url_for('static', filename='logout.png')}}" width="30">Log out
+                    </a>
+                </span>
             </div>
         </nav>
 
-      <div class="container">
+        <div class="container">
             <div class="row">
                 <div class="col md-12">
-                  <span class="float-start">Staff List</span> <a href="{{url_for('upload_file')}}">Print</a>
-                        <button type="button" class="btn btn-success float-end btn-sm" data-bs-toggle="modal"
-                                data-bs-target="#Mymodal" >Add Staff
-                        </button>
+                    <span class="float-start">Staff List</span> <a href="{{url_for('upload_file')}}">Print</a>
+                    <button type="button" class="btn btn-success float-end btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#Mymodal">Add Staff
+                    </button>
 
 
                     {%with messages = get_flashed_messages()%}
