@@ -22,7 +22,7 @@
                      width="30">
                 {{user}}
             </a>
-            <span class="float-end"> <a href="{{url_for('logout')}}"><img alt="" class="d-inline-block align-text-top" height="24" src="{{url_for('static', filename='logout.png')}}" width="30">Log out</a>
+            <span class="float-end"> <a href="{{url_for('logout')}}" class="btn btn-success btn-sm" role="button"><img alt="" class="d-inline-block align-text-top" height="24" src="{{url_for('static', filename='logout.png')}}" width="30">Log out</a>
             </span>
         </div>
     </nav>
@@ -60,7 +60,7 @@
 
 
                 <div class="col-12">
-                    <button class="btn btn-primary" type="submit">Submit</button>
+                    <button class="btn btn-success" type="submit">Submit</button>
                 </div>
 
             </form>

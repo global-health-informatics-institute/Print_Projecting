@@ -2,6 +2,9 @@
 <head>
     <title>Admin Dashboard</title>
     <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+     <link href="{{url_for('static', filename='css/all.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='style.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/fontawesome.min.css')}}" rel="stylesheet">
     <script type="text/javascript">
          function preventBack(){window.history.forward};
          setTimeout("preventBack()",0);
@@ -23,7 +26,7 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Dashboard</a>
                 <span class="float-end">
-                    <a href="{{url_for('logout')}}">
+                    <a href="{{url_for('logout')}}" class="btn btn-success btn-sm" role="button" >
                         <img alt="" class="d-inline-block align-text-top" height="24" src="{{url_for('static', filename='logout.png')}}" width="30">Log out
                     </a>
                 </span>
@@ -33,8 +36,8 @@
         <div class="container">
             <div class="row">
                 <div class="col md-12">
-                    <span class="float-start">Staff List</span> <a href="{{url_for('upload_file')}}">Print</a>
-                    <button type="button" class="btn btn-success float-end btn-sm" data-bs-toggle="modal"
+                    <span class="float-start">Staff List</span> <a class="btn btn-outline-success btn-sm" role="button" href="{{url_for('upload_file')}}"><i class="fa-solid fa-print"></i> &nbsp Print</a>
+                    <button type="button" class="btn btn-outline-success float-end btn-sm" data-bs-toggle="modal"
                             data-bs-target="#Mymodal">Add Staff
                     </button>
 
@@ -63,7 +66,7 @@
                         <tr>
                             <th>Id</th>
                             <th>User Name</th>
-                            <th>Password</th>
+                           <!-- <th>Password</th>-->
                             <th>Role</th>
                             <th>Action</th>
                         </tr>
@@ -72,7 +75,7 @@
                         <tr>
                             <td>{{row.0}}</td>
                             <td>{{row.1}}</td>
-                            <td>{{row.2}}</td>
+                            <!--<td>{{row.2}}</td>-->
                             <td>{{row.3}}</td>
                             <td>
                                 <a href="/update/{{row.0}}" class="btn btn-warning btn-xs" data-bs-toggle="modal"
@@ -89,9 +92,8 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title">Please Update Staff Data</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
+                                        <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+
 
                                     </div>
 
@@ -139,7 +141,7 @@
                                             <div class="form-group">
 
 
-                                                <button class="btn btn-primary" type="submit">Update Staff</button>
+                                                <button class="btn btn-success" type="submit">Update Staff</button>
 
 
                                             </div>
@@ -150,8 +152,7 @@
 
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
-                                        </button>
+                                       
                                     </div>
 
 
@@ -177,9 +178,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Please Insert Staff Data</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal" aria-label="Close"></button>
 
                     </div>
 
@@ -193,27 +192,27 @@
                             <div class="form-group">
 
 
-                                <label>Username:</label>
-                                <input type="text" class="form-control" name="user_name" required="1">
+                                <input type="text" class="form-control" name="user_name" required="1" placeholder="Username">
 
 
                             </div>
+                            <br>
 
 
                             <div class="form-group">
 
 
-                                <label>Password:</label>
-                                <input type="text" class="form-control" name="password" required="1">
+
+                                <input type="password" class="form-control" name="password" required="1" placeholder="Password">
 
 
                             </div>
 
+<br>
+
                             <div class="form-group">
 
-
-                                <label>Role:</label>
-                                <input class="form-control" name="role" required="1" type="text">
+                                <input class="form-control" name="role" required="1" type="text" placeholder="Role">
 
 
                             </div>
@@ -222,7 +221,7 @@
                             <div class="form-group">
 
 
-                                <button class="btn btn-primary" type="submit">Add Staff</button>
+                                <button class="btn btn-success" type="submit">Save</button>
 
 
                             </div>
@@ -233,7 +232,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
                     </div>
 
 
