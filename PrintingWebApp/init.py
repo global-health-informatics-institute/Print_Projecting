@@ -106,16 +106,24 @@ def logout():
 @app.route('/add_user', methods=['GET', 'POST'])
 def add_user():
     if request.method == 'POST':
-        flash("Data Inserted Successfully")
+
         user_details = request.form
         user_name = user_details['user_name']
         password = user_details['password']
         role = user_details['role']
         # encryptedpassword = generate_password_hash(password, method='sha256')
         cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO users( user_name, password, role) VALUES(%s,%s, %s)", (user_name, password, role))
-        mysql.connection.commit()
-        return redirect(url_for('Admin_Dashboard'))
+        cur.execute("SELECT * FROM users WHERE user_name=%s", [user_name])
+        record = cur.fetchall()
+
+        if record:
+            flash("username already exists, try again")
+            return redirect(url_for('Admin_Dashboard'))
+        else:
+            cur.execute("INSERT INTO users( user_name, password, role) VALUES(%s,%s, %s)", (user_name, password, role))
+            mysql.connection.commit()
+            flash("Data Inserted Successfully")
+            return redirect(url_for('Admin_Dashboard'))
 
 
 @app.route('/delete/<string:id_data>', methods=['GET', 'POST'])

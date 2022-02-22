@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Upload Document</title>
     <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/all.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/fontawesome.min.css')}}" rel="stylesheet">
     <script type="text/javascript">
          function preventBack(){window.history.forward};
          setTimeout("preventBack()",0);
@@ -22,7 +24,9 @@
                      width="30">
                 {{user}}
             </a>
-            <span class="float-end"> <a href="{{url_for('logout')}}" class="btn btn-success btn-sm" role="button"><img alt="" class="d-inline-block align-text-top" height="24" src="{{url_for('static', filename='logout.png')}}" width="30">Log out</a>
+            <span class="float-end"> <a href="{{url_for('logout')}}" class="btn btn-primary btn-sm" role="button">
+                  <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+            </a>
             </span>
         </div>
     </nav>
@@ -37,9 +41,11 @@
         <br>
         {{message}}
 
-        Choose your Department: &nbsp
+
         <div class="bg-light">
             <form action="" enctype="multipart/form-data" method="POST">
+                 <br>
+                Choose your Department: &nbsp
 
                 <select aria-label="Default select example" class="form-select" id="department" name="department">
 
@@ -58,11 +64,12 @@
                 <input id="copies" min="1" name="copies" style="width: 7em" type="number"/>
                 <br><br>
 
-
+                <center>
                 <div class="col-12">
                     <button class="btn btn-success" type="submit">Submit</button>
                 </div>
-
+                </center>
+                    <br>
             </form>
         </div>
 

@@ -26,8 +26,8 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Dashboard</a>
                 <span class="float-end">
-                    <a href="{{url_for('logout')}}" class="btn btn-success btn-sm" role="button" >
-                        <img alt="" class="d-inline-block align-text-top" height="24" src="{{url_for('static', filename='logout.png')}}" width="30">Log out
+                    <a href="{{url_for('logout')}}" class="btn btn-primary btn-sm" role="button" >
+                         <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
                     </a>
                 </span>
             </div>
@@ -38,7 +38,7 @@
                 <div class="col md-12">
                     <span class="float-start">Staff List</span> <a class="btn btn-outline-success btn-sm" role="button" href="{{url_for('upload_file')}}"><i class="fa-solid fa-print"></i> &nbsp Print</a>
                     <button type="button" class="btn btn-outline-success float-end btn-sm" data-bs-toggle="modal"
-                            data-bs-target="#Mymodal">Add Staff
+                            data-bs-target="#Mymodal">Add Staff &nbsp <i class="fa-solid fa-user-plus"></i>
                     </button>
 
 
@@ -48,14 +48,14 @@
 
                     {% for message in messages %}
 
-                    <div class="alert alert-success alert-dismissable" role="alert">
+                    <div class="alert alert-warning alert-dismissable" role="alert">
 
-                        <button type="button" class="close" data-bs-dismiss="alert" aria-label="close">
+                        <button type="button" class="btn btn-close btn-danger" data-bs-dismiss="alert" aria-label="close">
 
-                            <span aria-hidden="true">&times;</span>
 
                         </button>
                         {{message}}
+
                     </div>
 
                     {%endfor%}
@@ -79,9 +79,9 @@
                             <td>{{row.3}}</td>
                             <td>
                                 <a href="/update/{{row.0}}" class="btn btn-warning btn-xs" data-bs-toggle="modal"
-                                   data-bs-target="#modaledit{{row.0}}">Edit</a>
+                                   data-bs-target="#modaledit{{row.0}}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
                                 <a href="/delete/{{row.0}}" class="btn btn-danger btn-xs"
-                                   onclick="return confirm('Are You Sure For Delete?')">Delete</a>
+                                   onclick="return confirm('Are You Sure For Delete?')"><i class="fa-solid fa-trash-can"></i> Delete</a>
                             </td>
 
                         </tr>
@@ -188,7 +188,6 @@
 
                         <form action="{{url_for('add_user')}}" method="POST">
 
-
                             <div class="form-group">
 
 
@@ -243,6 +242,8 @@
 
 
         </div>
+
+
     </div>
 
 
