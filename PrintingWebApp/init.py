@@ -1,4 +1,6 @@
 import os
+import time
+
 from flask import Flask, render_template, request, url_for, redirect, session, flash
 from flask_mysqldb import MySQL
 from werkzeug.utils import secure_filename
@@ -59,7 +61,7 @@ def upload_file():
             cur.execute("INSERT INTO print( u_id, department, filename, copies) VALUES(%s,%s,%s,%s)",
                         (u_id, department, filename, copies))
             mysql.connection.commit()
-            return render_template('Print.html', user=username, msg="file uploaded successfully!!")
+            return render_template('Print.html', user=username)
 
     return render_template('Print.html', user=username)
 
@@ -68,6 +70,27 @@ def upload_file():
 def dropdown():
     dir_list = os.listdir(path)
     return render_template('Print.html', dir_list=dir_list)
+
+
+@app.route('/print_doc')
+def print_doc():
+    l_files = os.listdir(path)
+
+    for file in l_files:
+
+        file_path = f'{path}\\{file}'
+
+        if os.path.isfile(file_path):
+            try:
+                os.startfile(file_path, 'print')
+                time.sleep(5)
+                return render_template('Print.html', msg="Printing file!!!")
+            except:
+                return render_template('Print.html', msg="file could not be printed!")
+        else:
+            return render_template('Print.html', msg="{file} is not a file, so can not be printed!")
+
+    return render_template('Print.html', msg="No file to print!!!")
 
 
 @app.route('/staff_login', methods=['GET', 'POST'])
