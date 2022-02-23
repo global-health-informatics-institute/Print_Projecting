@@ -61,6 +61,7 @@ def upload_file():
             cur.execute("INSERT INTO print( u_id, department, filename, copies) VALUES(%s,%s,%s,%s)",
                         (u_id, department, filename, copies))
             mysql.connection.commit()
+            print_doc()
             return render_template('Print.html', user=username)
 
     return render_template('Print.html', user=username)
