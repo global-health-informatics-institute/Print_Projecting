@@ -61,7 +61,14 @@ def upload_file():
             cur.execute("INSERT INTO print( u_id, department, filename, copies) VALUES(%s,%s,%s,%s)",
                         (u_id, department, filename, copies))
             mysql.connection.commit()
-            print_doc()
+            cur.execute("SELECT * FROM print WHERE u_id=%s", (session['u_id'],))
+            p_rec = cur.fetchone()
+            copies = p_rec[4]
+            x = 0
+            while x < copies:
+                print_doc()
+                x = x + 1
+            delete_file()
             return render_template('Print.html', user=username)
 
     return render_template('Print.html', user=username)
@@ -86,12 +93,29 @@ def print_doc():
                 os.startfile(file_path, 'print')
                 time.sleep(5)
                 return render_template('Print.html', msg="Printing file!!!")
-            except:
-                return render_template('Print.html', msg="file could not be printed!")
+            except OSError as e:
+                return render_template('Print.html', msg="file could not be printed!" + e.strerror)
         else:
             return render_template('Print.html', msg="{file} is not a file, so can not be printed!")
 
     return render_template('Print.html', msg="No file to print!!!")
+
+
+@app.route('/delete_file')
+def delete_file():
+    l_files = os.listdir(path)
+    for file in l_files:
+        file_path = f'{path}\\{file}'
+        if os.path.isfile(file_path):
+            try:
+                os.remove(file_path)
+                return render_template('Print.html')
+            except OSError as e:
+                return render_template('Print.html', msg="Failed to remove file" + e.strerror)
+        else:
+            return render_template('Print.html', msg="Directory can not be deleted")
+
+    return render_template('Print.html', msg="No file to delete!!!")
 
 
 @app.route('/staff_login', methods=['GET', 'POST'])
