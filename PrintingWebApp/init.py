@@ -9,14 +9,13 @@ from werkzeug.security import generate_password_hash, check_password_hash
 UPLOAD_FOLDER = 'uploads'
 path = "uploads"
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'docx', 'png', 'jpg', 'jpeg', 'gif'}
-
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key = "super secret key"
-app.config['MYSQL_HOST'] = '127.0.0.1'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'printing'
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'ghii'
+app.config['MYSQL_PASSWORD'] = 'mypassword'
+app.config['MYSQL_DB'] = 'Printing'
 
 mysql = MySQL(app)
 
